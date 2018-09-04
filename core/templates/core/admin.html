@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block main %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center bg-primary text-white mb-3">
+                    <div class="card-body">
+                        <h3>Audio</h3>
+                        <h1 class="display-4">
+                            <i class="fa fa-music"></i> {{ audio }}
+                        </h1>
+                        <a href="{% url "admin:core_audio_add" %}" class="btn btn-outline-light btn-sm">Upload Audio</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center bg-primary text-white mb-3">
+                    <div class="card-body">
+                        <h3>Video</h3>
+                        <h1 class="display-4">
+                            <i class="fa fa-file-movie-o"></i> {{ video }}
+                        </h1>
+                        <a href="{% url "admin:core_video_add" %}" class="btn btn-outline-light btn-sm">Upload Video</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center bg-primary text-white mb-3">
+                    <div class="card-body">
+                        <h3>Events</h3>
+                        <h1 class="display-4">
+                            <i class="fa fa-calendar"></i> {{ events }}
+                        </h1>
+                        <a href="{% url "admin:core_event_add" %}" class="btn btn-outline-light btn-sm">Add Event</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center bg-primary text-white mb-3">
+                    <div class="card-body">
+                        <h3>Gallery</h3>
+                        <h1 class="display-4">
+                            <i class="fa fa-picture-o"></i> {{ pics }}
+                        </h1>
+                        <a href="{% url "core:upload" %}" class="btn btn-outline-light btn-sm">Upload Photos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block active %}
+    var id = 'admin';
+{% endblock %}

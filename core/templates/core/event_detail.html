@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block main %}
+    <div class="content mt-3">
+        {% if event.poster %}
+            {% thumbnail event.poster "300x300" as im %}
+                <img src="{{ im.url }}" alt="">
+            {% endthumbnail %}
+        {% else %}
+            <img src="/media/cache/e2/00/e2009cd3d4f6ae965e1a5184700eb06a.jpg" alt="">
+        {% endif %}
+        <p>{{ event.name }}</p>
+        <p><i class="fa fa-map-marker"></i> {{ event.venue }}</p>
+        <p><i class="fa fa-calendar"></i> {{ event.start.time }} to {{ event.end.time }}</p>
+    </div>
+{% endblock %}
+{% block active %}
+    var id = 'events';
+{% endblock %}

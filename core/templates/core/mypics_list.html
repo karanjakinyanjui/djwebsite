@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block main %}
+    <div class="content mt-3 ml-4">
+        {% for pic in object_list %}
+            <div class="col-md-3 col-sm-12">
+                {% thumbnail pic.file "270x270" as im %}
+                    <img src="{{ im.url }}" alt="">
+                {% endthumbnail %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block active %}
+    var id = 'gallery';
+{% endblock %}

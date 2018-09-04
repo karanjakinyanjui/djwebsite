@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block main %}
+    <div class="content mt-3 ml-4">
+        {% for event in object_list %}
+            <div class="col-md-3 col-sm-12">
+                {% if event.poster %}
+                    {% thumbnail event.poster "270x270" as im %}
+                        <img src="{{ im.url }}" alt="">
+                    {% endthumbnail %}
+                    {% else %}
+                    <img src="/media/cache/e2/00/e2009cd3d4f6ae965e1a5184700eb06a.jpg" alt="">
+                {% endif %}
+                <p><a href="{{ event.get_absolute_url }}">{{ event.name }}</a></p>
+                <p><i class="fa fa-map-marker"></i> {{ event.venue }}</p>
+                <p><i class="fa fa-calendar"></i> {{ event.start.date }} {{ event.start.time }} to {{ event.end.time }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block active %}
+    var id = 'events';
+{% endblock %}

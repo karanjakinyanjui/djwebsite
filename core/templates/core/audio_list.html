@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+{% block main %}
+    <div class="content mt-3 ml-4">
+        {% for audio in object_list %}
+            <div class="col-md-3 col-sm-12">
+                {% if audio.poster %}
+                    {% thumbnail audio.poster "270x270" as im %}
+                        <img src="{{ im.url }}" alt="">
+                    {% endthumbnail %}
+                {% else %}
+                    <img src="/media/cache/0d/1f/0d1f9692f2fc1e31d744cdf09976c212.jpg" alt="">
+                {% endif %}
+                <p><a href="{{ audio.get_absolute_url }}">{{ audio.title }}</a></p>
+                <p><a href="{{ audio.file.url }}" class="btn btn-primary">Download</a></p>
+                <p>{{ audio.description }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+{% block active %}
+    var id = 'mixes';
+{% endblock %}

@@ -1,0 +1,5 @@
+Django==2.0.5
+django-bootstrap-form==3.4
+django-polymorphic==2.0.3
+Pillow==5.0.0
+sorl-thumbnail==12.4.1
