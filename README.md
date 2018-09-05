@@ -1,2 +1,0 @@
-# djwebsite
-Django DJ website

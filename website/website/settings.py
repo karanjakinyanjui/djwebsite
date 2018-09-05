@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'polymorphic',
     'bootstrapform',
     'storages',
+    # 0.
     # 'axe',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -70,7 +71,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'core.context.contact'
+                #'core.context.contact'
             ],
         },
     },
@@ -138,10 +139,13 @@ AWS_STORAGE_BUCKET_NAME = 'madollarmedia'
 S3DIRECT_REGION = 'us-east-2'
 
 
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-STATIC_URL = 'http://' + AWS_STORAGE_BUCKET_NAME + '.s3.amazonaws.com/'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 S3_USE_SIGV4 = True
 AWS_S3_SIGNATURE_VERSION = 's3v4'
